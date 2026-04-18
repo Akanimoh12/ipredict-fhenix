@@ -1,0 +1,34 @@
+{
+  "name": "ipredict-contracts",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:local": "hardhat run scripts/deploy.ts --network localhost",
+    "deploy:sepolia": "hardhat run scripts/deploy.ts --network eth-sepolia",
+    "create-market": "hardhat run scripts/createMarket.ts --network eth-sepolia",
+    "resolve-market": "hardhat run scripts/resolveMarket.ts --network eth-sepolia",
+    "clean": "hardhat clean"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@nomicfoundation/hardhat-ethers": "^3.0.8",
+    "@typechain/ethers-v6": "^0.5.1",
+    "@typechain/hardhat": "^9.1.0",
+    "hardhat": "^2.22.0",
+    "typechain": "^8.3.2",
+    "typescript": "^5.4.0",
+    "ts-node": "^10.9.2",
+    "@types/node": "^20.12.0",
+    "@types/mocha": "^10.0.6",
+    "chai": "^4.4.1",
+    "@types/chai": "^4.3.14",
+    "dotenv": "^16.4.5",
+    "@cofhe/hardhat-plugin": "^0.4.0"
+  },
+  "dependencies": {
+    "@fhenixprotocol/cofhe-contracts": "^0.1.3",
+    "@openzeppelin/contracts": "^5.1.0"
+  }
+}
