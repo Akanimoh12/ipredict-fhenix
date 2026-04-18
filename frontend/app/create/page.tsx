@@ -5,6 +5,8 @@ import { useCreateMarket } from "@/hooks/useIPredictCore";
 import { useAccount } from "wagmi";
 import { CATEGORIES } from "@/types/market";
 import { motion } from "framer-motion";
+import { HiOutlinePlus } from "react-icons/hi";
+import { RiShieldKeyholeLine } from "react-icons/ri";
 
 export default function CreateMarketPage() {
   const [question, setQuestion] = useState("");
@@ -26,36 +28,42 @@ export default function CreateMarketPage() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-10">
+    <div className="mx-auto max-w-2xl px-4 py-10 sm:px-6">
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
+        className="mb-8"
       >
-        <h1 className="mb-2 text-2xl font-bold text-white">Create Market</h1>
-        <p className="mb-8 text-gray-400">
+        <div className="mb-3 flex items-center gap-2.5">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500/30 to-indigo-600/30">
+            <HiOutlinePlus className="h-5 w-5 text-fhenix-300" />
+          </div>
+          <h1 className="text-2xl font-bold text-white">Create Market</h1>
+        </div>
+        <p className="text-sm text-gray-400">
           Create a new prediction market with FHE-encrypted stakes
         </p>
       </motion.div>
 
       <form onSubmit={handleSubmit} className="space-y-5">
-        <div className="rounded-xl border border-vault-border bg-vault-card p-6 space-y-5">
+        <div className="glass-card space-y-5 rounded-2xl p-6">
           <div>
-            <label className="mb-1.5 block text-sm text-gray-400">Question</label>
+            <label className="mb-2 block text-sm font-medium text-gray-400">Question</label>
             <input
               type="text"
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               placeholder="Will ETH reach $10k by end of 2025?"
-              className="w-full rounded-lg border border-vault-border bg-vault-bg px-4 py-2.5 text-white placeholder:text-gray-600 focus:border-fhenix-600 focus:outline-none"
+              className="w-full rounded-xl border border-vault-border bg-vault-bg/80 px-4 py-3 text-white placeholder:text-gray-600 transition focus:border-fhenix-500 focus:outline-none focus:ring-1 focus:ring-fhenix-500/30"
             />
           </div>
 
           <div>
-            <label className="mb-1.5 block text-sm text-gray-400">Category</label>
+            <label className="mb-2 block text-sm font-medium text-gray-400">Category</label>
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full rounded-lg border border-vault-border bg-vault-bg px-4 py-2.5 text-white focus:border-fhenix-600 focus:outline-none"
+              className="w-full rounded-xl border border-vault-border bg-vault-bg/80 px-4 py-3 text-white transition focus:border-fhenix-500 focus:outline-none focus:ring-1 focus:ring-fhenix-500/30"
             >
               {CATEGORIES.map((c) => (
                 <option key={c.name} value={c.name}>
@@ -66,7 +74,7 @@ export default function CreateMarketPage() {
           </div>
 
           <div>
-            <label className="mb-1.5 block text-sm text-gray-400">
+            <label className="mb-2 block text-sm font-medium text-gray-400">
               Duration (days)
             </label>
             <input
@@ -75,19 +83,24 @@ export default function CreateMarketPage() {
               max="365"
               value={deadlineDays}
               onChange={(e) => setDeadlineDays(e.target.value)}
-              className="w-full rounded-lg border border-vault-border bg-vault-bg px-4 py-2.5 text-white focus:border-fhenix-600 focus:outline-none"
+              className="w-full rounded-xl border border-vault-border bg-vault-bg/80 px-4 py-3 text-white transition focus:border-fhenix-500 focus:outline-none focus:ring-1 focus:ring-fhenix-500/30"
             />
           </div>
         </div>
 
+        <div className="flex items-center gap-2.5 rounded-xl border border-fhenix-700/20 bg-fhenix-900/15 px-4 py-3 text-xs text-fhenix-300">
+          <RiShieldKeyholeLine className="h-4 w-4 shrink-0 text-fhenix-400" />
+          <span>All stakes in this market will be encrypted with FHE</span>
+        </div>
+
         {error && (
-          <div className="rounded-lg bg-red-900/20 p-3 text-sm text-red-400">
+          <div className="rounded-xl border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-400">
             {error.message}
           </div>
         )}
 
         {isSuccess && (
-          <div className="rounded-lg bg-green-900/20 p-3 text-sm text-green-400">
+          <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-4 text-sm text-emerald-400">
             Market created successfully!
           </div>
         )}
@@ -95,7 +108,7 @@ export default function CreateMarketPage() {
         <button
           type="submit"
           disabled={loading || !isConnected || !question.trim()}
-          className="w-full rounded-lg bg-fhenix-600 py-3 text-sm font-medium text-white transition hover:bg-fhenix-500 disabled:cursor-not-allowed disabled:opacity-50"
+          className="w-full rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 py-3.5 text-sm font-semibold text-white shadow-lg shadow-violet-500/20 transition-all hover:shadow-violet-500/30 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none"
         >
           {!isConnected
             ? "Connect Wallet"

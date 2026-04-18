@@ -3,38 +3,91 @@
 @tailwind utilities;
 
 :root {
-  --vault-bg: #0a0e1a;
+  --vault-bg: #050816;
+  --accent: #8b5cf6;
 }
 
 body {
   background-color: var(--vault-bg);
-  color: #e5e7eb;
+  color: #e2e8f0;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* ── Scrollbar ─────────────────────────────── */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #1e293b #0a0e1a;
+  scrollbar-color: #1e1b4b #050816;
 }
+*::-webkit-scrollbar { width: 5px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background-color: #312e81; border-radius: 99px; }
 
-*::-webkit-scrollbar {
-  width: 6px;
-}
-
-*::-webkit-scrollbar-track {
-  background: #0a0e1a;
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: #1e293b;
-  border-radius: 3px;
-}
-
+/* ── Number input spinners ─────────────────── */
 input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+input[type="number"] { -moz-appearance: textfield; }
+
+/* ── Moon orbiting animations ──────────────── */
+@keyframes moonOrbit1 {
+  0%   { transform: translate(-30%, -20%) rotate(0deg); }
+  25%  { transform: translate(60%, 10%) rotate(90deg); }
+  50%  { transform: translate(40%, 70%) rotate(180deg); }
+  75%  { transform: translate(-10%, 50%) rotate(270deg); }
+  100% { transform: translate(-30%, -20%) rotate(360deg); }
+}
+@keyframes moonOrbit2 {
+  0%   { transform: translate(70%, 60%) rotate(0deg); }
+  25%  { transform: translate(20%, -10%) rotate(-90deg); }
+  50%  { transform: translate(-20%, 30%) rotate(-180deg); }
+  75%  { transform: translate(50%, 80%) rotate(-270deg); }
+  100% { transform: translate(70%, 60%) rotate(-360deg); }
+}
+@keyframes moonOrbit3 {
+  0%   { transform: translate(50%, 20%) rotate(0deg); }
+  33%  { transform: translate(-10%, 60%) rotate(120deg); }
+  66%  { transform: translate(80%, 40%) rotate(240deg); }
+  100% { transform: translate(50%, 20%) rotate(360deg); }
 }
 
-input[type="number"] {
-  -moz-appearance: textfield;
+.moon-orbit-1 { animation: moonOrbit1 120s linear infinite; }
+.moon-orbit-2 { animation: moonOrbit2 90s linear infinite; }
+.moon-orbit-3 { animation: moonOrbit3 150s linear infinite; }
+
+/* ── Glass card effect ─────────────────────── */
+.glass-card {
+  background: rgba(15, 12, 41, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(139, 92, 246, 0.08);
+}
+.glass-card:hover {
+  border-color: rgba(139, 92, 246, 0.2);
+  background: rgba(15, 12, 41, 0.75);
+}
+
+/* ── Glow effects ──────────────────────────── */
+.glow-violet { box-shadow: 0 0 30px -5px rgba(139, 92, 246, 0.15); }
+.glow-violet-lg { box-shadow: 0 0 60px -10px rgba(139, 92, 246, 0.2); }
+
+/* ── Text gradient ─────────────────────────── */
+.text-gradient {
+  background: linear-gradient(135deg, #c084fc 0%, #818cf8 50%, #67e8f9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Pulse glow on status dot ──────────────── */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.5); }
+  50% { box-shadow: 0 0 8px 2px rgba(52, 211, 153, 0.3); }
+}
+.pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+
+/* ── Selection ─────────────────────────────── */
+::selection {
+  background: rgba(139, 92, 246, 0.3);
+  color: #f8fafc;
 }

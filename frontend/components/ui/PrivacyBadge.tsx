@@ -1,13 +1,9 @@
+import { RiShieldKeyholeLine } from "react-icons/ri";
+
 export function PrivacyBadge() {
   return (
-    <span className="inline-flex items-center gap-1 rounded-full bg-fhenix-900/30 px-2.5 py-0.5 text-xs font-medium text-fhenix-300">
-      <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
-        <path
-          fillRule="evenodd"
-          d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-          clipRule="evenodd"
-        />
-      </svg>
+    <span className="inline-flex items-center gap-1.5 rounded-lg border border-fhenix-700/20 bg-fhenix-900/15 px-2.5 py-1 text-xs font-medium text-fhenix-300">
+      <RiShieldKeyholeLine className="h-3 w-3" />
       FHE Encrypted
     </span>
   );

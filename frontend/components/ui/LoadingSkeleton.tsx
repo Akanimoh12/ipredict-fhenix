@@ -8,7 +8,7 @@ export function LoadingSkeleton({ className }: LoadingSkeletonProps) {
   return (
     <div
       className={cn(
-        "animate-pulse rounded-lg bg-vault-border",
+        "animate-pulse rounded-xl bg-vault-surface",
         className
       )}
     />

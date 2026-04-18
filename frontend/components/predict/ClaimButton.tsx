@@ -1,6 +1,7 @@
 "use client";
 
 import { useClaimWinnings } from "@/hooks/useClaimWinnings";
+import { HiOutlineGift } from "react-icons/hi";
 
 interface ClaimButtonProps {
   marketId: bigint;
@@ -14,10 +15,14 @@ export function ClaimButton({ marketId, outcome }: ClaimButtonProps) {
   const loading = permitting || isPending || isConfirming;
 
   return (
-    <div className="rounded-xl border border-vault-border bg-vault-card p-5">
-      <h3 className="mb-2 text-sm font-medium text-gray-400">Claim Winnings</h3>
+    <div className="glass-card rounded-2xl p-5">
+      <div className="mb-4 flex items-center gap-2">
+        <HiOutlineGift className="h-5 w-5 text-fhenix-400" />
+        <h3 className="text-sm font-semibold text-white">Claim Winnings</h3>
+      </div>
       <p className="mb-4 text-sm text-gray-500">
-        Market resolved: <span className={outcome ? "text-green-400" : "text-red-400"}>
+        Market resolved:{" "}
+        <span className={outcome ? "font-semibold text-emerald-400" : "font-semibold text-red-400"}>
           {outcome ? "YES" : "NO"}
         </span>
       </p>
@@ -25,7 +30,7 @@ export function ClaimButton({ marketId, outcome }: ClaimButtonProps) {
       <button
         onClick={claimWinnings}
         disabled={loading || isSuccess}
-        className="w-full rounded-lg bg-fhenix-600 py-3 text-sm font-medium text-white transition hover:bg-fhenix-500 disabled:cursor-not-allowed disabled:opacity-50"
+        className="w-full rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-500/20 transition-all hover:shadow-violet-500/30 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none"
       >
         {permitting
           ? "Generating Permit..."

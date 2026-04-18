@@ -12,10 +12,10 @@ export function CategoryFilter() {
       <button
         onClick={() => setCategory(null)}
         className={cn(
-          "rounded-full px-4 py-1.5 text-sm transition",
+          "rounded-xl px-4 py-2 text-xs font-medium transition-all sm:text-sm",
           !selectedCategory
-            ? "bg-fhenix-600 text-white"
-            : "bg-vault-card text-gray-400 hover:text-white"
+            ? "bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-sm shadow-violet-500/20"
+            : "border border-vault-border bg-vault-surface text-gray-400 hover:border-fhenix-700/40 hover:text-white"
         )}
       >
         All
@@ -25,10 +25,10 @@ export function CategoryFilter() {
           key={cat.name}
           onClick={() => setCategory(cat.name)}
           className={cn(
-            "rounded-full px-4 py-1.5 text-sm transition",
+            "rounded-xl px-4 py-2 text-xs font-medium transition-all sm:text-sm",
             selectedCategory === cat.name
-              ? "bg-fhenix-600 text-white"
-              : "bg-vault-card text-gray-400 hover:text-white"
+              ? "bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-sm shadow-violet-500/20"
+              : "border border-vault-border bg-vault-surface text-gray-400 hover:border-fhenix-700/40 hover:text-white"
           )}
         >
           {cat.icon} {cat.name}
