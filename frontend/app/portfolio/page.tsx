@@ -46,7 +46,7 @@ export default function PortfolioPage() {
           <div className="py-12 text-center">
             <p className="mb-4 text-sm text-gray-500">No positions yet.</p>
             <Link
-              href="/"
+              href="/markets"
               className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-violet-500/20 transition-all hover:shadow-violet-500/30 hover:brightness-110"
             >
               Start Predicting <HiOutlineArrowRight className="h-4 w-4" />

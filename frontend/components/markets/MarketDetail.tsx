@@ -50,7 +50,7 @@ export function MarketDetail({ marketId }: MarketDetailProps) {
     <div className="space-y-6">
       {/* Back link */}
       <Link
-        href="/"
+        href="/markets"
         className="inline-flex items-center gap-1.5 text-sm text-gray-500 transition hover:text-white"
       >
         <HiOutlineArrowLeft className="h-4 w-4" />

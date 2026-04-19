@@ -9,7 +9,7 @@ import { RiShieldKeyholeLine } from "react-icons/ri";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
-  { href: "/", label: "Markets" },
+  { href: "/markets", label: "Markets" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/create", label: "Create" },
 ];
@@ -39,7 +39,7 @@ export function Navbar() {
               href={link.href}
               className={cn(
                 "rounded-lg px-4 py-2 text-sm font-medium transition-all",
-                pathname === link.href
+                pathname === link.href || (link.href === "/markets" && pathname.startsWith("/market"))
                   ? "bg-fhenix-700/20 text-fhenix-300"
                   : "text-gray-400 hover:bg-white/5 hover:text-white"
               )}
@@ -77,7 +77,7 @@ export function Navbar() {
                 onClick={() => setMobileOpen(false)}
                 className={cn(
                   "block rounded-lg px-4 py-2.5 text-sm font-medium transition",
-                  pathname === link.href
+                  pathname === link.href || (link.href === "/markets" && pathname.startsWith("/market"))
                     ? "bg-fhenix-700/20 text-fhenix-300"
                     : "text-gray-400 hover:bg-white/5 hover:text-white"
                 )}
