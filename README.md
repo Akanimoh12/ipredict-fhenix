@@ -32,7 +32,7 @@ On regular prediction markets, your bet size is public. Whales front-run you. ME
 ## Links
 
 - **Website**: [https://ipredict-fhenix.vercel.app](https://ipredict-fhenix.vercel.app)
-- **Demo Video**: [Watch on Loom](https://loom.com)
+- **Demo Video**: [Watch on YouTube](https://youtu.be/6jpRiArkRpM)
 
 ## Quick Start
 
